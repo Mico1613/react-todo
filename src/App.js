@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.scss";
 
 function App() {
+  const ref = React.useRef(0);
+  const [Arr, setArr] = React.useState([]);
+  const addTask = () => {
+    setArr([...Arr, ref.current.value]);
+    ref.current.value = "";
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className='kek'>
+      <ul>
+        {Arr.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+        <div className='lol'>
+          <button onClick={addTask}> Добавить </button>
+          <button onClick={() => setArr([])}> Очистить </button>
+        </div>
+        <input ref={ref} type="text" name="name" placeholder="Введите задачу" />
+      </div>
+    </>
   );
 }
 
