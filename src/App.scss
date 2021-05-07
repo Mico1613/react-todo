@@ -1,26 +1,65 @@
-button {
-  margin-top: 30px;
-  border: 5px solid red;
-  border-radius: 10px;
-  padding: 10px;
-}
-input {
-  border: 2px solid green;
-  font-size: 24px;
-  width: 100%;
-  margin-top: 20px;
-}
-li{
-  line-height: 2;
-}
-.lol {
-  font-size: 24px;
-  display: flex;
-  justify-content: space-between;
-}
-.kek {
-  margin: 0 auto;
-  max-width: 350px;
-  width: 100%;
-  padding-top: 20px;
+/* VARS */
+$LA: "Lato", sans-serif;
+$MO: "Montserrat";
+$RO: "Roboto";
+/* VARS */
+
+.wrapper {
+  padding: 100px 20px 50px;
+  .main {
+    display: flex;
+    margin: 0 auto;
+    max-width: 750px;
+    width: 100%;
+    height: 600px;
+    .menu {
+      background-color: #f4f6f8;
+      flex: 0 0 200px;
+      display: flex;
+      flex-direction: column;
+      padding-top: 40px;
+    }
+    .tasks {
+      background-color: #fff;
+      flex: 0 0 560px;
+      .container {
+        padding: 50px 65px 0 55px;
+        .header {
+          display: flex;
+          border-bottom: 1px solid #f2f2f2;
+          padding-bottom: 20px;
+          margin-bottom: 30px;
+          h2 {
+            font-family: $MO;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 32px;
+            line-height: 39px;
+            color: #64c4ed;
+            margin-right: 15px;
+          }
+          input {
+            padding: 5px;
+            max-width: 400px;
+            font-family: $MO;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 32px;
+            line-height: 39px;
+            color: #64c4ed;
+            margin-right: 10px;
+            cursor: text;
+            user-select: text;
+            background-color: transparent;
+          }
+          img {
+            width: 15px;
+            height: 15px;
+            transform: translateY(21px);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
 }
