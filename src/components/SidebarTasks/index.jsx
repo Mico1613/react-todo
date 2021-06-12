@@ -34,7 +34,6 @@ const SidebarTasks = React.memo(
       ref.current.scrollTo({ top: 9999999, behavior: "smooth" });
     }, [changeListsTrigger]);
 
-    console.log(task);
     const changeVisible = (index) => {
       setTask(index);
       dispatch({

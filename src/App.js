@@ -17,7 +17,7 @@ function App() {
   React.useEffect(() => {
     if (!localStorage.getItem("data")) {
       axios
-        .get("http://localhost:3000/db.json")
+        .get("http://localhost:8080/db.json")
         .then(({ data }) => localStorage.setItem("data", JSON.stringify(data)))
         .then(() => JSON.parse(localStorage.getItem("data")))
         .then((data) => dispatch({ type: "GET_DATA", payload: data }));
@@ -26,11 +26,11 @@ function App() {
       dispatch({ type: "GET_DATA", payload: data });
     }
   }, []);
-  console.log(state);
+
   React.useEffect(() => {
     localStorage.setItem("data", JSON.stringify(state));
   }, [state]);
-  
+
   return (
     <div className="wrapper">
       <main className="main">
