@@ -4,10 +4,10 @@ $MO: "Montserrat";
 $RO: "Roboto";
 /* VARS */
 
-.none{
- display: none;
+.none {
+  display: none;
 }
-.add-folder{
+.add-folder {
   position: relative;
   .btn-add {
     user-select: none;
@@ -27,7 +27,7 @@ $RO: "Roboto";
       font-size: 14px;
       line-height: 17px;
       letter-spacing: 0.15px;
-  
+
       color: #767676;
     }
   }
@@ -57,6 +57,14 @@ $RO: "Roboto";
     }
     ul {
       margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      .circle {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+      }
     }
     button {
       padding: 10px 0;
@@ -79,4 +87,7 @@ $RO: "Roboto";
       cursor: pointer;
     }
   }
+}
+.choosen{
+  border: 2px solid;
 }

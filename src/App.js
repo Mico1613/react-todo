@@ -2,77 +2,45 @@ import React from "react";
 import "./App.scss";
 import SidebarTasks from "./components/SidebarTasks";
 import PopupAdd from "./components/PopupAdd";
-
-import edit from "./assets/edit.png";
+import TaskContent from "./components/TaskContent";
+import axios from "axios";
+import reducer from "./reducer";
 
 function App() {
-  const refInput = React.useRef();
-  const refEdit = React.useRef();
-  const [inputValue, setInputValue] = React.useState("Фронтенд и Бэкенд");
-
-  const onEdit = () => {
-    refInput.current.removeAttribute("disabled");
-  };
-  const setAttr = () => {
-    refInput.current.setAttribute("disabled", "disabled");
-  };
-
-  const saveTitle = (e) => {
-    const path = e.path || (e.composedPath && e.composedPath());
-    if (!path.includes(refInput.current) && !path.includes(refEdit.current)) {
-      setInputValue(refInput.current.value);
-      setAttr();
-    }
-    if (
-      refInput.current.hasAttribute("disabled") &&
-      path.includes(refEdit.current)
-    ) {
-      onEdit();
-      refInput.current.focus();
-    } else if (
-      !refInput.current.hasAttribute("disabled") &&
-      path.includes(refEdit.current)
-    ) {
-      setInputValue(refInput.current.value);
-      setAttr();
-    }
-  };
+  const [state, dispatch] = React.useReducer(reducer, {
+    lists: [],
+    tasks: [],
+    colors: [],
+    visibleList: 0,
+    changeListsTrigger: 0,
+  });
   React.useEffect(() => {
-    document.addEventListener("click", saveTitle);
+    if (!localStorage.getItem("data")) {
+      axios
+        .get("http://localhost:3000/db.json")
+        .then(({ data }) => localStorage.setItem("data", JSON.stringify(data)))
+        .then(() => JSON.parse(localStorage.getItem("data")))
+        .then((data) => dispatch({ type: "GET_DATA", payload: data }));
+    } else if (localStorage.getItem("data")) {
+      const data = JSON.parse(localStorage.getItem("data"));
+      dispatch({ type: "GET_DATA", payload: data });
+    }
   }, []);
-
+  console.log(state);
   React.useEffect(() => {
-    refInput.current.style.width =
-      (refInput.current.value.length + 1) * 20 + "px";
-  }, [inputValue]);
-
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      setInputValue(refInput.current.value);
-      setAttr();
-    }
-  };
+    localStorage.setItem("data", JSON.stringify(state));
+  }, [state]);
   
   return (
     <div className="wrapper">
       <main className="main">
         <nav className="menu">
-          <SidebarTasks />
-          <PopupAdd />
+          <SidebarTasks {...state} dispatch={dispatch} />
+          <PopupAdd {...state} dispatch={dispatch} />
         </nav>
         <div className="tasks">
           <div className="container">
-            <header className="header">
-              <input
-                onKeyPress={handleKeyPress}
-                ref={refInput}
-                onChange={(e) => setInputValue(e.target.value)}
-                disabled
-                type="text"
-                value={inputValue}
-              />
-              <img ref={refEdit} src={edit} alt="#" />
-            </header>
+            <TaskContent {...state} dispatch={dispatch} />
           </div>
         </div>
       </main>

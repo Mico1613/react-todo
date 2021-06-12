@@ -1,0 +1,64 @@
+/* VARS */
+$LA: "Lato", sans-serif;
+$MO: "Montserrat";
+$RO: "Roboto";
+/* VARS */
+.new-task {
+  svg {
+    margin-right: 15px;
+    transform: translateY(2px);
+  }
+  font-family: $LA;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.15px;
+  color: #b4b4b4;
+  &:active {
+    color: #919191;
+  }
+}
+
+.add-task {
+  input {
+    width: 100%;
+    font-family: $LA;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0.15px;
+    color: #7a7a7a;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    &::placeholder {
+      font-family: $LA;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 26px;
+      letter-spacing: 0.15px;
+      color: #c7c7c7;
+    }
+  }
+  .add-task-buttons {
+    .add, .cancel {
+      background-color: #4dd599;
+      font-family: $LA;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 38px;
+      text-align: center;
+      letter-spacing: 0.15px;
+      color: #ffffff;
+      padding: 0 20px;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+    .cancel {
+      background-color: #f4f6f8;
+      color: #9c9c9c;
+    }
+  }
+}

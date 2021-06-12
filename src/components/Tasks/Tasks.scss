@@ -1,0 +1,82 @@
+/* VARS */
+$LA: "Lato", sans-serif;
+$MO: "Montserrat";
+$RO: "Roboto";
+/* VARS */
+ul {
+  li {
+    position: relative;
+    margin-bottom: 20px;
+    &:hover {
+      .close {
+        fill: #e3e3e3;
+      }
+    }
+    .close {
+      user-select: none;
+      position: absolute;
+      top: 6px;
+      right: 0;
+      width: 11px;
+      height: 11px;
+      cursor: pointer;
+      &:hover {
+        fill: #c5c5c5;
+      }
+      &:active {
+        fill: #afafaf;
+      }
+    }
+    .task-text {
+      flex: 1;
+      word-break: break-word;
+      font-family: $LA;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 19px;
+      color: #000000;
+      display: inline-block;
+      user-select: none;
+      margin-right: 20px;
+      .isCompleted {
+        display: inline-flex;
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        border: 1px solid #f2f2f2;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        margin-right: 15px;
+        cursor: pointer;
+        transform: translateY(-2px);
+        .onComplete {
+          transform: translateX(1px);
+          stroke: none;
+        }
+        &:hover {
+          background-color: #f2f2f2;
+          .onComplete {
+            stroke: #b2b2b2;
+          }
+        }
+      }
+    }
+  }
+}
+.completed {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #4dd599;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  cursor: pointer;
+  transform: translateY(-2px);
+  background-color: #4dd599;
+  svg {
+    stroke: #fff;
+  }
+}

@@ -2,9 +2,13 @@ import React from "react";
 import "./PopupAdd.scss";
 import add from "../../assets/add.png";
 import close from "../../assets/close_add_task.png";
+import classnames from "classnames";
 
-const PopupAdd = React.memo(() => {
+const PopupAdd = React.memo(({ colors, lists, dispatch }) => {
+  const [color, setColor] = React.useState(0);
+  const [inputValue, setInputValue] = React.useState("");
   const [popupState, setPopupState] = React.useState(false);
+
   React.useEffect(() => {
     document.addEventListener("click", popupHideClick);
   }, []);
@@ -12,11 +16,30 @@ const PopupAdd = React.memo(() => {
   const refInput = React.useRef();
   const changePopupVisibility = () => {
     setPopupState(!popupState);
+    setTimeout(() => {
+      refInput.current.focus();
+    }, 0);
   };
-  const addTask = () => {
+  const onEnterAddFolder = (e) => {
+    if (e.key === "Enter") {
+      addFolder();
+    }
+  };
+  const addFolder = () => {
+    dispatch({
+      type: "ADD_FOLDER",
+      payload: {
+        id: Math.random(),
+        name: inputValue,
+        colorId: color + 1,
+      },
+    });
+    dispatch({ type: "TRIGGER_LISTS" });
     refInput.current.value = "";
     changePopupVisibility();
+    setInputValue("");
   };
+
   const popupHideClick = (e) => {
     const path = e.path || (e.composedPath && e.composedPath());
     if (!path.includes(refPopup.current)) {
@@ -32,13 +55,28 @@ const PopupAdd = React.memo(() => {
       </div>
       <div className="popup-wrapper">
         <div className={popupState === true ? "popup" : "none"}>
-          <input type="text" ref={refInput} placeholder="Название папки" />
+          <input
+            onChange={(e) => {
+              setInputValue(e.target.value);
+            }}
+            type="text"
+            ref={refInput}
+            placeholder="Название папки"
+            onKeyPress={(e) => onEnterAddFolder(e)}
+          />
           <ul>
-            {[].map((item, index) => {
-              <li key={`${item}_${index}`}></li>;
-            })}
+            {colors.map((item, index) => (
+              <li
+                key={`${item}_${index}`}
+                className={classnames("circle", {
+                  choosen: color === index,
+                })}
+                style={{ backgroundColor: item.hex, borderColor: item.name }}
+                onClick={() => setColor(index)}
+              ></li>
+            ))}
           </ul>
-          <button onClick={addTask}>Добавить папку</button>
+          <button onClick={addFolder}>Добавить папку</button>
           <img src={close} alt="#" onClick={changePopupVisibility} />
         </div>
       </div>

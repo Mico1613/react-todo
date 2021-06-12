@@ -2,12 +2,12 @@
   "lists": [
     {
       "id": 1,
-      "name": "Продажи",
+      "name": "Покупки",
       "colorId": 5
     },
     {
       "id": 2,
-      "name": "Фронтенд",
+      "name": "Изучение JS",
       "colorId": 4
     },
     {
@@ -26,14 +26,9 @@
       "colorId": 1
     },
     {
+      "id": 6,
       "name": "Спорт",
-      "colorId": 3,
-      "id": 6
-    },
-    {
-      "name": "Курс по ReactJS ToDo",
-      "colorId": 7,
-      "id": 7
+      "colorId": 3
     }
   ],
   "tasks": [
@@ -62,32 +57,32 @@
       "completed": false
     },
     {
+      "id": 5,
       "listId": 2,
-      "text": "123",
-      "completed": true,
-      "id": 5
+      "text": "ООП",
+      "completed": true
     },
     {
       "listId": 1,
-      "text": "test",
+      "text": "Сметана",
       "completed": false,
       "id": 6
     },
     {
       "listId": 1,
-      "text": "qweqwe",
+      "text": "Картошка",
       "completed": false,
       "id": 7
     },
     {
       "listId": 1,
-      "text": "qweqwe",
+      "text": "Сало",
       "completed": true,
       "id": 8
     },
     {
       "listId": 1,
-      "text": "123",
+      "text": "Пиво",
       "completed": false,
       "id": 9
     },
@@ -99,33 +94,33 @@
     },
     {
       "listId": 2,
-      "text": "222",
+      "text": "Typescript",
+      "completed": true,
+      "id": 11
+    },
+    {
+      "listId": 5,
+      "text": "Сделали сайдбар",
       "completed": true,
       "id": 12
     },
     {
-      "listId": 7,
-      "text": "Сделали сайдбар",
-      "completed": true,
-      "id": 15
-    },
-    {
-      "listId": 7,
+      "listId": 5,
       "text": "Сделали список задач",
       "completed": true,
-      "id": 16
+      "id": 13
     },
     {
-      "listId": 7,
+      "listId": 5,
       "text": "Сделали удаление и редактирование задач и списков",
       "completed": true,
-      "id": 17
+      "id": 14
     },
     {
-      "listId": 8,
-      "text": "tttt",
+      "listId": 6,
+      "text": "Пресс качать",
       "completed": false,
-      "id": 18
+      "id": 15
     }
   ],
   "colors": [
@@ -147,7 +142,7 @@
     {
       "id": 4,
       "hex": "#FFBBCC",
-      "name": "pink"
+      "name": "#B07D88"
     },
     {
       "id": 5,
@@ -161,8 +156,8 @@
     },
     {
       "id": 7,
-      "hex": "#110133",
-      "name": "black"
+      "hex": "#F0E549",
+      "name": "#B5AD36"
     },
     {
       "id": 8,

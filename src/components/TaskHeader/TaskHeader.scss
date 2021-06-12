@@ -1,0 +1,34 @@
+/* VARS */
+$LA: "Lato", sans-serif;
+$MO: "Montserrat";
+$RO: "Roboto";
+/* VARS */
+.header {
+    display: flex;
+    border-bottom: 1px solid #f2f2f2;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    .header-text {
+      padding: 5px;
+      max-width: 400px;
+      font-family: $MO;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 32px;
+      line-height: 39px;
+      cursor: text;
+      user-select: text;
+      background-color: transparent;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    svg {
+      width: 15px;
+      height: 15px;
+      transform: translateY(21px);
+      cursor: pointer;
+      
+    }
+  }
