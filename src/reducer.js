@@ -22,7 +22,7 @@ export default (state, { type, payload }) => {
     case "CHANGE_TITLE":
       return { ...state, lists: [...payload] };
     case "TRIGGER_LISTS":
-      return { ...state, changeListsTrigger: state.changeListsTrigger + 1 };
+      return { ...state, changeListsTrigger: state.changeListsTrigger + 1};
     default:
       return state;
   }

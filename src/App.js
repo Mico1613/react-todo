@@ -14,7 +14,8 @@ function App() {
     visibleList: 0,
     changeListsTrigger: 0,
   });
-  React.useEffect(() => {
+  React.useEffect(() => {}, []);
+  React.useLayoutEffect(() => {
     if (!localStorage.getItem("data")) {
       axios
         .get("http://localhost:8080/db.json")
@@ -22,11 +23,14 @@ function App() {
         .then(() => JSON.parse(localStorage.getItem("data")))
         .then((data) => dispatch({ type: "GET_DATA", payload: data }));
     } else if (localStorage.getItem("data")) {
-      const data = JSON.parse(localStorage.getItem("data"));
-      dispatch({ type: "GET_DATA", payload: data });
+      const { lists, colors, tasks } = JSON.parse(localStorage.getItem("data"));
+      dispatch({
+        type: "GET_DATA",
+        payload: { lists, colors, tasks },
+      });
     }
   }, []);
-
+  
   React.useEffect(() => {
     localStorage.setItem("data", JSON.stringify(state));
   }, [state]);

@@ -1,8 +1,9 @@
-const express = require("express");
-const path = require("path");
-const cors = require("cors");
+import express from "express";
+import path from "path";
+import cors from "cors";
 const port = process.env.PORT || 8080;
 const app = express();
+const __dirname = path.resolve();
 app.use(cors());
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, "build")));

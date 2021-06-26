@@ -4,7 +4,7 @@ import classnames from "classnames";
 import tasks from "../../assets/tasks.png";
 
 const SidebarTasks = React.memo(
-  ({ lists, colors, dispatch, changeListsTrigger }) => {
+  ({ lists, colors, dispatch, changeListsTrigger, visibleList }) => {
     const ref = React.useRef();
     const [task, setTask] = React.useState(0);
     const newLists = [{ id: 0 }, ...lists];
@@ -20,20 +20,20 @@ const SidebarTasks = React.memo(
       if (task) {
         setTask(newLists.length - 1);
       }
-      if (lists.length > 0) {
+      if (lists.length === 1) {
+        setTask(newLists.length - 1);
+        dispatch({ type: "CHANGE_VISIBLE", payload: lists[0].id });
+      }
+      if (lists.length > 1) {
         setTask(newLists.length - 1);
         dispatch({
           type: "CHANGE_VISIBLE",
           payload: lists[lists.length - 1].id,
         });
       }
-      if (lists.length === 1) {
-        setTask(newLists.length - 1);
-        dispatch({ type: "CHANGE_VISIBLE", payload: lists[0].id });
-      }
+
       ref.current.scrollTo({ top: 9999999, behavior: "smooth" });
     }, [changeListsTrigger]);
-
     const changeVisible = (index) => {
       setTask(index);
       dispatch({
