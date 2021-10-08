@@ -14,11 +14,11 @@ function App() {
     visibleList: 0,
     changeListsTrigger: 0,
   });
-  React.useEffect(() => {}, []);
-  React.useLayoutEffect(() => {
+
+  React.useEffect(() => {
     if (!localStorage.getItem("data")) {
       axios
-        .get("http://localhost:8080/db.json")
+        .get("http://localhost:3001/db.json")
         .then(({ data }) => localStorage.setItem("data", JSON.stringify(data)))
         .then(() => JSON.parse(localStorage.getItem("data")))
         .then((data) => dispatch({ type: "GET_DATA", payload: data }));
